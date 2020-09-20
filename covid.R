@@ -13,9 +13,17 @@ df_covid_benford <- df_covid %>%
   filter(value > 0) %>% 
   mutate(primero = calcula_primero(value))
 
+df_benford <- tibble(
+  eje_x = 1:9, 
+  benford = log10(1 + 1/1:9) 
+)
+ 
+
 df_covid_benford %>% 
   ggplot(aes(x = primero)) + 
   geom_bar(aes(y = ..prop..)) +
+  geom_line(data = df_benford, aes(x = eje_x, y = benford), 
+            col = "red", size = 1) + 
   geom_text(aes(y = ..prop.., 
                 label = scales::percent(..prop..)), 
             stat= "count",

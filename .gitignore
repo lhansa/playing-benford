@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+acceso.py
+pyvenv.cfg
+lib
+bin
+.vscode
